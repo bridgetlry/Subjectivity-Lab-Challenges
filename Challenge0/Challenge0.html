@@ -1,0 +1,63 @@
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "Challenge0.css">
+        <script src = "Challenge0.js"></script>
+    </head>
+
+    <body>
+        <title>Coding Challenge</title>
+
+        <div id = main>
+            <h1>Challenge 0: Building A Dynamic Website</h1>
+
+            <div id = biosketch>
+                <img id = headshot src = "headshot.jpg" alt = "Bridget's Headshot">
+                <p id = biosketchText>
+                    <span id = citySentence></span>
+                    My name is Bridget Leary, and I am a rising third-year 
+                    Computer Science and Cognitive Psychology major at Northeastern
+                    University. I grew up in the suburbs of Chicago, Illinois and moved
+                    out to Boston for college. I will be a Research Assistant at the
+                    Subjectivity Lab this fall, and I am very excited to begin working.
+                </p>
+    
+
+            </div>
+
+            <div id = "city">
+                <br>
+                <label for="cityBox">In which city where you born?</label><br>
+                <input type="text" id = "cityBox" name = "cityBox" placeholder="e.g. Boston">
+                <button onclick="addCity()" id = "cityButton">Add place of birth</button>
+            </div>
+
+            <div id = "nightMode">
+                <br>
+                <button onclick="nightMode()" id = "nightModeButton">Night Mode</button>
+            </div>
+
+            <div id="dateTime">
+                <p>
+                    Current Date and Time: 
+                    <span id = currentDateTime></span>
+                </p>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>
+
+
+
+
+
+
+
+

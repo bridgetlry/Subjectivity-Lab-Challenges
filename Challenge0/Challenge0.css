@@ -1,0 +1,36 @@
+body {
+    background-color: white;
+    color: black;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 24;
+    font-family: Sans-Serif;
+
+}
+
+p {
+    text-align: justify;
+}
+
+img {
+    width: 200px;
+    height: 250px;
+}
+
+#cityButton {
+    color: white;
+    background-color: blue;
+
+}
+
+#nightModeButton {
+    color: white;
+    background-color: black;
+}
+
+#dateTime {
+    font-family: Sans-Serif;
+}
