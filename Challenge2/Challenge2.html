@@ -1,0 +1,84 @@
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "Challenge2.css">
+        <script src = "Challenge2.js"></script>
+    </head>
+
+    <body>
+        <title>The Stroop Effect</title>
+
+        <div id = main>
+            <h1>Challenge 2: What Color Is It? The Stroop Effect</h1>
+
+
+            <div id = instructions>
+                <h2>Instructions:</h2>
+
+                <p id = instructionsText>
+                    You will see words printed in different colors, your task is
+                    to select which color the word is in.
+                </p>
+
+                <button onclick = "showDemo()" id = "showExamples">Show Examples</button>
+
+            </div>
+
+            <div id = demoBox>
+                <p>Here are some examples</p>
+                <video id = demo autoplay loop muted>
+                    <source src = "demo.mp4" type="video/mp4">
+                    Browser doesn't support mp4
+                </video>
+
+                <br>
+                <br>
+
+                <button onclick = "startTrial()">Start Trial</button>
+
+            </div>
+
+            <div id = experiment>
+                
+                <div id = wordBox>
+                    <!--Show word-->
+                    <p id = trialWord>red</p>
+                </div>
+                
+
+                <div id = colorSamples>
+                    <div class = circle id = circle1 onclick="evaluateResponse('circle1')"></div>
+                    <div class = circle id = circle2 onclick="evaluateResponse('circle2')"></div>
+                    <div class = circle id = circle3 onclick="evaluateResponse('circle3')"></div>
+                    <div class = circle id = circle4 onclick="evaluateResponse('circle4')"></div>
+                    <div class = circle id = circle5 onclick="evaluateResponse('circle5')"></div>
+                </div>    
+
+
+
+            </div>
+
+            <div id = endingScreen>
+                <p>Thanks for participating!</p>
+            </div>
+
+        </div>
+
+
+
+
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+</html>
