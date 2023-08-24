@@ -1,4 +1,4 @@
-// global variables for each trial
+// create global variables for each trial
 var colorWord;
 var fontColor;
 var startRTclock;
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 // determine the order of the circle answers
 function determinecircleColors () {
-    circleColors = shuffle(colors);
+    circleColors = randomize(colors);
     for (i = 0; i < circleColors.length; i++) {
         $("#circle" + (i + 1)).css("background-color",eval(circleColors[i])) 
     }
@@ -56,40 +56,6 @@ function showDemo() {
 function startTrial() {
     $("#demoBox").hide();
     setTimeout(nextTrial, startDelay); // starts
-}
-
-// constructs the different trials for the experiment
-// congruent: 4 possible combos
-// incongruent: 4 * 3 = 12
-
-function createTrials() {
-    let possibleColorWords = colors;
-    let possibleFontColors = colors;
-    var newTrial;
-    var numRep = possibleFontColors.length - 1;
-
-
-    // create congruent combinations
-    for (i = 0; i < possibleColorWords.length; i++) { // goes through the colors
-        for (j = 0; j < numRep; j++) { // repeats it to make the correct number of combinations
-            newTrial = [possibleColorWords[i], possibleFontColors[i], "congruent"];
-            trials.push[newTrial]; // add to trials
-        }
-    }
-
-    // create incongruent combinations
-    for (i = 0; i < possibleColorWords.length; i++) {
-        for (j = 0; j < possibleFontColors.length; j++) {
-            if (possibleColorWords[i].toLowerCase() != possibleFontColors[j].toLowerCase()) { // if the word and the font color aren't congruent
-                newTrial = [possibleColorWords[i], possibleFontColors[j], "incongruent"];
-                trials.push[newTrial]; // add to trials
-            }
-        }
-    }
-
-    randomize(trials);
-
-    return trials;
 }
 
 // randomizes trial order
@@ -109,6 +75,41 @@ function randomize(array) {
         
     }
     return array;
+}
+
+// constructs the different trials for the experiment
+// incongruent: 12 possible combos
+// congruent: 4 possible combos (needs x3 multiplier)
+//------------------------------- ANSWER
+function createTrials () {
+    let possibleColorWords = colors;
+    let possibleFontColors = colors;
+    var newTrial;
+
+    // create trials
+    for (i = 0; i < possibleColorWords.length; i++) { 
+        for (j = 0; j < possibleFontColors.length; j++) {   
+            
+            // create congruent trials
+            if (possibleColorWords[i] == possibleFontColors[j]) {
+                newTrial = [possibleColorWords[i], possibleFontColors[j], "congruent"];
+                
+                // creates the congruent trial three times to account for more incongruent trials
+                for (k = 0; k < 3; k++) {
+                    trials.push(newTrial);                     
+                }
+            // create incongruent trials
+            } else {
+                newTrial = [possibleColorWords[i], possibleFontColors[j], "incongruent"];
+                trials.push(newTrial);                
+            }        
+            
+        }
+    }
+    
+    randomize(trials);
+     
+    return trials;
 }
 
 // shows word
@@ -141,7 +142,7 @@ function presentStimuli() {
     fontColor = trials[currentTrial][1]; // second item in specific trial (gets the color of the font)
     congruency = trials[currentTrial][2]; // third item in specific trial (whether or not the color and word are the same)
 
-    $("#trialWord").text(colorWord);
+    $("#trialWord").text(colorWord.toUpperCase());
     $("#trialWord").css("color", eval(fontColor)); //  sets the word to the font color for the trial
     $("#trialWord").show();
 
